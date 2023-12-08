@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding :0;
+            box-sizing: border-box;
+        }
+        .bord{
+            background-color: gray;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 200px;
+            height: 200px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1px;
+        }
+        .bord button{
+            border: none;
+            transition: all 0.7s ease;
+        }
+        .bord button:hover{
+            background-color: goldenrod;
+        }
+        #finsh{
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%,0);
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="bord">
+        <button data-id="1"></button>
+        <button data-id="2"></button>
+        <button data-id="3"></button>
+        <button data-id="4"></button>
+        <button data-id="5"></button>
+        <button data-id="6"></button>
+        <button data-id="7"></button>
+        <button data-id="8"></button>
+        <button data-id="9"></button>
+    </div>
+    <div id="finsh">
+        <h2 id="mark"></h2>
+    </div>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $('button').on('click', function() {
+             const btn = $(this).attr('data-id');
+             const buttonElement = $(this); // Store the reference to the button element
+             $.get('http://localhost/tictactoe/Game.php/?id='+ btn, function(data, status) {
+                if(data == '0'){
+                    buttonElement.html('X'); // Use the stored reference to update the button content
+                }else if(data == '1'){
+                    buttonElement.html('O'); // Use the stored reference to update the button content
+                }
+                else{
+                    $("#mark").html(data);
+                }
+             });
+        });
+     </script>
+</body>
+</html>
