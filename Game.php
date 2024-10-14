@@ -6,8 +6,8 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once 'GameStatue.php';
 require_once 'Player.php';
 require_once 'Gamemove.php';
-
 header('Content-Type','application/json');
+// header('Content-Type','application/json');
 
 
 // $username ='mohammed';
